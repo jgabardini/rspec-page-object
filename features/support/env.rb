@@ -7,18 +7,18 @@ Sinatra::Application.app_file = File.join(File.dirname(__FILE__), *%w[.. .. app.
 
 require 'rspec/expectations'
 require 'rack/test'
-require 'webrat'
+require 'capybara/dsl'
 
-Webrat.configure do |config|
-  config.mode = :rack
-end
+#Webrat.configure do |config|
+#  config.mode = :rack
+#end
 
 class MyWorld
   include Rack::Test::Methods
-  include Webrat::Methods
-  include Webrat::Matchers
+#  include Webrat::Methods
+#  include Webrat::Matchers
 
-  Webrat::Methods.delegate_to_session :response_code, :response_body
+#  Webrat::Methods.delegate_to_session :response_code, :response_body
 
   def app
     Sinatra::Application
