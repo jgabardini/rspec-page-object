@@ -1,37 +1,33 @@
-#
+require './spec/ahorcado_po'
 
 describe  'Ahorcado' do
 	it 'Nombre de la aplicación' do
-		visit '/'
-		expect(page.find('h1').text).to include('Ahorcado')
+		inicio = AhorcadoPO.new
+		expect(inicio.aplicacion).to include('Ahorcado')
 	end
 
 	it 'X no está en repollo' do
-		visit '/'
-		fill_in :letra, :with => 'X'
-		click_button :una_letra
-		expect(page.find('#mensaje').text).to include('no existe')
+		inicio = AhorcadoPO.new
+		resultado= inicio.probar_letra 'X'
+		expect(resultado.mensaje).to include('no existe')	
 	end
 
 	it 'E está en repollo' do
-		visit '/'
-		fill_in :letra, :with => 'E'
-		click_button :una_letra
-		expect(page.find('#mensaje').text).to include('Acertaste')
+		inicio = AhorcadoPO.new
+		resultado= inicio.probar_letra 'E'
+		expect(resultado.mensaje).to include('Acertaste')
 	end
 
 	it 'casa no es repollo' do
-		visit '/'
-		fill_in :palabra, :with => 'casa'
-		click_button :una_palabra
-		expect(page.find('#mensaje').text).to include('no es')
+		inicio = AhorcadoPO.new
+		resultado= inicio.probar_palabra  'casa'
+		expect(resultado.mensaje).to include('no es')
 	end
 
 	it 'repollo es repollo. Ganaste' do
-		visit '/'
-		fill_in :palabra, :with => 'repollo'
-		click_button :una_palabra
-		expect(page.find('#mensaje').text).to include('Ganaste')
+		inicio = AhorcadoPO.new
+		resultado= inicio.probar_palabra   'repollo'
+		expect(resultado.mensaje).to include('Ganaste')
 	end
 
 end 
