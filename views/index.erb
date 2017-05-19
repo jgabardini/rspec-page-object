@@ -12,6 +12,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
-  	Hola Ahorcado!
+  	<h1>Hola Ahorcado!</h1>
+  	<form action='letra' method="POST">
+  	<input type="TEXT" name="letra"/>
+  	<input type="submit" id="una_letra" value="Letra">
+  	</form>
+
+  	<form action='palabra' method="POST">
+  	<input type="TEXT" name="palabra"/>
+  	<input type="submit" id="una_palabra" value="Palabra">
+  	</form>
+  	<div id="mensaje"><%= @mensaje%> </div>
   </body>
 </html>
